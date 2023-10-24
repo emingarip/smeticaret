@@ -16,7 +16,7 @@ namespace smEticaret.Data.Entities
         public string password { get; set; }
 
         public int RoleID { get; set; }
-        public RoleEntity role { get; set; }
+        public ICollection<RoleEntity> role { get; set; }
 
     }
 }
