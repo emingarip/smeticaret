@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace smEticaret.Data.Entities
 {
-    internal class AppDbContext : DbContext
+    public class AppDbContext : DbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -20,5 +20,14 @@ namespace smEticaret.Data.Entities
         public DbSet<ProductEntity> Products { get; set; }
         public DbSet<RoleEntity> Roles { get; set; }
         public DbSet<UserEntity> Users { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<RoleEntity>().HasData(
+                new RoleEntity { id = 1, name = "user"},
+                 new RoleEntity { id = 2, name = "seller" }
+            );
+        }
     }
+    
 }

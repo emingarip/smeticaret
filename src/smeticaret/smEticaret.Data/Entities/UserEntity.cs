@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Security;
 using System.Text;
@@ -21,7 +22,8 @@ namespace smEticaret.Data.Entities
         public string passwordHash { get; set; }
 
         public int RoleID { get; set; }
-        public ICollection<RoleEntity> role { get; set; }
+        [ForeignKey(nameof(RoleID))]
+        public RoleEntity role { get; set; }
 
     }
 }
